@@ -1,4 +1,4 @@
-package com.example.flutterapp;
+package com.yourcompany.flutterapp;
 
 import android.os.Bundle;
 
