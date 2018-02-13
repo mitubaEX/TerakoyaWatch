@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ui/app.dart';
 
-
 class MyDrawer extends StatefulWidget {
   bool complete;
 
@@ -16,18 +15,6 @@ class _MyDrawerState extends State<MyDrawer> {
   bool complete;
 
   _MyDrawerState(this.complete);
-
-  void changeFalseComplete(){
-    setState((){
-      this.complete = false;
-    });
-  }
-
-  void changeTrueComplete(){
-    setState((){
-      this.complete = true;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +37,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 leading: const Icon(Icons.bookmark),
                 title: new Text('doing'),
                 onTap: (){
-                  changeFalseComplete();
+                  setState((){
+                    this.complete = false;
+                  });
                   Navigator.push(context, new MaterialPageRoute(
                     settings: const RouteSettings(name: '/home'),
                     builder: (BuildContext context) => new MyHomePage(complete: this.complete,),
@@ -63,7 +52,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 title: new Text('done'),
                 selected: this.complete,
                 onTap: (){
-                  changeTrueComplete();
+                  setState((){
+                    this.complete = true;
+                  });
                   Navigator.push(context, new MaterialPageRoute(
                     settings: const RouteSettings(name: '/home'),
                     builder: (BuildContext context) => new MyHomePage(complete: this.complete,),

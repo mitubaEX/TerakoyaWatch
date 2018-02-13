@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/todo.dart';
-import 'package:flutter_app/ui/app.dart';
+import 'package:flutter_app/repository/repository_factory.dart';
 
 class TodoItem extends StatefulWidget {
   final Todo todo;
   final bool completeCondition;
-  TodoItem({Key key, this.todo, this.completeCondition}):super(key: key);
+  VoidCallback onTap;
+  TodoItem({Key key, this.todo, this.completeCondition, this.onTap}):super(key: key);
   @override
-  _TodoItemState createState() => new _TodoItemState(completeCondition);
+  _TodoItemState createState() => new _TodoItemState(completeCondition, onTap);
 }
 
 class _TodoItemState extends State<TodoItem> {
   final bool completeCondition;
+  VoidCallback onTap;
 
-  _TodoItemState(this.completeCondition);
+  _TodoItemState(this.completeCondition, this.onTap);
 
   @override
   void initState(){
@@ -24,6 +26,12 @@ class _TodoItemState extends State<TodoItem> {
     if(comp)
       return TextDecoration.lineThrough;
     return TextDecoration.none;
+  }
+
+  String getSnackBarText(bool comp){
+    if(comp)
+      return 'undo doing!';
+    return 'doing!!!!!!';
   }
 
   @override
@@ -37,10 +45,15 @@ class _TodoItemState extends State<TodoItem> {
             setState((){
               widget.todo.comp = newValue;
             });
-            Navigator.pushReplacement(context, new MaterialPageRoute(
-              settings: const RouteSettings(name: '/home'),
-              builder: (BuildContext context) => new MyHomePage(complete: completeCondition,),
-            ));
+            new RepositoryFactory()
+                .getTodoRepositoryImpl()
+                .completeTodo(widget.todo.id);
+            Scaffold.of(context).showSnackBar(
+              new SnackBar(
+                  content: new Text(getSnackBarText(completeCondition)),
+              ),
+            );
+            onTap();
           },
         ),
         new Text(
