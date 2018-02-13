@@ -10,7 +10,7 @@ class TodoItem extends StatefulWidget {
 }
 
 class _TodoItemState extends State<TodoItem> {
-  final bool  completeCondition;
+  final bool completeCondition;
 
   _TodoItemState(this.completeCondition);
 
@@ -21,6 +21,7 @@ class _TodoItemState extends State<TodoItem> {
 
   @override
   Widget build(BuildContext context){
+    print('completeCondition:' + completeCondition.toString());
     return new Row(
       children: <Widget>[
         new Checkbox(
@@ -29,6 +30,10 @@ class _TodoItemState extends State<TodoItem> {
             setState((){
               widget.todo.comp = newValue;
             });
+//            Navigator.push(context, new MaterialPageRoute(
+//              settings: const RouteSettings(name: '/home'),
+//              builder: (BuildContext context) => new MyHomePage(),
+//            ));
           },
         ),
         new Text(widget.todo.id.toString()),

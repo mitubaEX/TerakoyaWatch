@@ -13,23 +13,29 @@ class App extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(),
+      home: new MyHomePage(false),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  bool complete;
+  MyHomePage(this.complete);
+
   @override
-  _MyHomePage createState() => new _MyHomePage();
+  _MyHomePage createState() => new _MyHomePage(this.complete);
 }
 
 
 class _MyHomePage extends State<MyHomePage> {
+  bool complete;
   final TextEditingController _controller = new TextEditingController();
   List<Todo> _todoList = [];
 
+  _MyHomePage(this.complete);
+
   void _addTodo(String todoName){
-    _todoList = new RepositoryFactory()
+    this._todoList = new RepositoryFactory()
         .getTodoRepositoryImpl()
         .addTodo(todoName);
     setState((){
@@ -38,7 +44,18 @@ class _MyHomePage extends State<MyHomePage> {
     print(Navigator.defaultRouteName);
   }
 
-  bool _completeCondition  = false;
+  @override
+  initState(){
+    setState((){
+      this._todoList = new RepositoryFactory()
+          .getTodoRepositoryImpl()
+          .findGivenComleteCondition(this.complete);
+    });
+    print('todolist');
+    print(this._todoList);
+    print(this.complete);
+  }
+
 
   @override
   build(BuildContext context){
@@ -47,20 +64,20 @@ class _MyHomePage extends State<MyHomePage> {
         title: new Text('ToDo'),
       ),
       drawer: new MyDrawer(
-        complete: _completeCondition,
-        changeTrueComplete: (){
-          setState((){
-            _completeCondition = true;
-          });
-        },
-        changeFalseComplete: (){
-          setState((){
-            _completeCondition = false;
-          });
-        },
+        complete: this.complete,
+//        changeTrueComplete: (){
+//          setState((){
+//            this.complete = true;
+//          });
+//        },
+//        changeFalseComplete: (){
+//          setState((){
+//            this.complete = false;
+//          });
+//        },
       ),
       body: new Center(
-          child: new TodoList(todoList: _todoList, completeCondition: _completeCondition,),
+          child: new TodoList(todoList: this._todoList, completeCondition: this.complete,),
       ),
       floatingActionButton: new FloatingActionButton(
 //        onPressed: () async {
