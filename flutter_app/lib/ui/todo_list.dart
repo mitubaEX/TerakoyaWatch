@@ -6,7 +6,6 @@ import 'package:flutter_app/repository/repository_factory.dart';
 class TodoList extends StatefulWidget {
   bool completeCondition;
   List<Todo> todoList;
-  final RouteObserver<PageRoute> routeObserver = new RouteObserver<PageRoute>();
 
   TodoList({
     this.todoList,
@@ -14,11 +13,10 @@ class TodoList extends StatefulWidget {
   });
 
   @override
-  _TodoListState createState() => new _TodoListState(todoList, completeCondition, routeObserver);
+  _TodoListState createState() => new _TodoListState(todoList, completeCondition);
 }
 
-class _TodoListState extends State<TodoList> with RouteAware{
-  final RouteObserver<PageRoute> routeObserver;
+class _TodoListState extends State<TodoList>{
 
   List<Todo> todoList;
 
@@ -27,40 +25,7 @@ class _TodoListState extends State<TodoList> with RouteAware{
   _TodoListState(
       this.todoList,
       this.completeCondition,
-      this.routeObserver
       );
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context));
-  }
-
-  @override
-  void dispose() {
-    routeObserver.unsubscribe(this);
-    super.dispose();
-  }
-
-  // 上の画面がpopされて、この画面に戻ったときに呼ばれます
-  void didPopNext() {
-    debugPrint("didPopNext ${runtimeType}");
-  }
-
-  // この画面がpushされたときに呼ばれます
-  void didPush() {
-    debugPrint("didPush ${runtimeType}");
-  }
-
-  // この画面がpopされたときに呼ばれます
-  void didPop() {
-    debugPrint("didPop ${runtimeType}");
-  }
-
-  // この画面から新しい画面をpushしたときに呼ばれます
-  void didPushNext() {
-    debugPrint("didPushNext ${runtimeType}");
-  }
 
   @override
   void initState() {
@@ -73,6 +38,11 @@ class _TodoListState extends State<TodoList> with RouteAware{
 
   @override
   Widget build(BuildContext context) {
+    if(todoList.length == 0){
+      return new Center(
+        child: new Text('No Todo'),
+      );
+    }
     return new ListView.builder(
       itemBuilder: (BuildContext, int index) => new TodoItem(
         todo: todoList[index],

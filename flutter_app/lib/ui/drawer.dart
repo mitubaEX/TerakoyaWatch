@@ -41,7 +41,11 @@ class _MyDrawerState extends State<MyDrawer> {
           new Container(
             color: Colors.blue,
             child:  new DrawerHeader(
-              child: new Text('todo'),
+              child: new ListView(
+                  children: <Widget>[
+                    new Icon(Icons.bookmark, size: 100.0, color: Colors.white,),
+                    new Center(child: new Text('todo', style: new TextStyle(fontSize: 25.0),),)
+                  ]),
             ),
           ),
           new Column(
@@ -53,7 +57,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   changeFalseComplete();
                   Navigator.push(context, new MaterialPageRoute(
                     settings: const RouteSettings(name: '/home'),
-                    builder: (BuildContext context) => new MyHomePage(this.complete),
+                    builder: (BuildContext context) => new MyHomePage(complete: this.complete,),
                   ));
                 },
                 selected: true ? !this.complete : true,
@@ -66,7 +70,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   changeTrueComplete();
                   Navigator.push(context, new MaterialPageRoute(
                     settings: const RouteSettings(name: '/home'),
-                    builder: (BuildContext context) => new MyHomePage(this.complete),
+                    builder: (BuildContext context) => new MyHomePage(complete: this.complete,),
                   ));
                 },
               )

@@ -13,14 +13,14 @@ class App extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(false),
+      home: new MyHomePage(complete: false,),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   bool complete;
-  MyHomePage(this.complete);
+  MyHomePage({this.complete});
 
   @override
   _MyHomePage createState() => new _MyHomePage(this.complete);
@@ -56,62 +56,26 @@ class _MyHomePage extends State<MyHomePage> {
     print(this.complete);
   }
 
+  String getTitle(){
+    if(this.complete)
+      return 'done';
+    return 'doing';
+  }
+
 
   @override
   build(BuildContext context){
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('ToDo'),
+        title: new Text(getTitle()),
       ),
       drawer: new MyDrawer(
         complete: this.complete,
-//        changeTrueComplete: (){
-//          setState((){
-//            this.complete = true;
-//          });
-//        },
-//        changeFalseComplete: (){
-//          setState((){
-//            this.complete = false;
-//          });
-//        },
       ),
       body: new Center(
           child: new TodoList(todoList: this._todoList, completeCondition: this.complete,),
       ),
       floatingActionButton: new FloatingActionButton(
-//        onPressed: () async {
-//          await showDialog(
-//            context: context,
-//            child: new SimpleDialog(
-//              title: const Text('Create Todo'),
-//              children: <Widget>[
-//                new Text('hello'),
-//                new Center(
-//                  child: new Column(
-//                    children: <Widget>[
-//                      new ListTile(
-//                        leading: const Icon(Icons.bookmark),
-//                        title: new TextField(
-//                          controller: _controller,
-//                          decoration: new InputDecoration(
-//                            hintText: "Todo",
-//                          ),
-//                        ),
-//                      ),
-//                      new RaisedButton(
-//                        color: Colors.blue,
-//                        onPressed: () => _addTodo(_controller.text),
-//                        textColor: Colors.white,
-//                        child: new Text('add'),
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//              ],
-//            ),
-//          );
-//        },
         onPressed: (){
           Navigator.push(context, new MaterialPageRoute(
             settings: const RouteSettings(name: '/create_todo'),

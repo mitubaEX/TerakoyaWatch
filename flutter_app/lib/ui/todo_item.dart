@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/todo.dart';
+import 'package:flutter_app/ui/app.dart';
 
 class TodoItem extends StatefulWidget {
   final Todo todo;
@@ -30,10 +31,10 @@ class _TodoItemState extends State<TodoItem> {
             setState((){
               widget.todo.comp = newValue;
             });
-//            Navigator.push(context, new MaterialPageRoute(
-//              settings: const RouteSettings(name: '/home'),
-//              builder: (BuildContext context) => new MyHomePage(),
-//            ));
+            Navigator.pushReplacement(context, new MaterialPageRoute(
+              settings: const RouteSettings(name: '/home'),
+              builder: (BuildContext context) => new MyHomePage(complete: completeCondition,),
+            ));
           },
         ),
         new Text(widget.todo.id.toString()),
