@@ -3,14 +3,10 @@ import 'package:flutter_app/ui/app.dart';
 
 
 class MyDrawer extends StatefulWidget {
-//  final VoidCallback changeTrueComplete;
-//  final VoidCallback changeFalseComplete;
   bool complete;
 
   MyDrawer({
     this.complete,
-//    this.changeTrueComplete,
-//    this.changeFalseComplete,
   });
 
   @override
@@ -60,12 +56,12 @@ class _MyDrawerState extends State<MyDrawer> {
                     builder: (BuildContext context) => new MyHomePage(complete: this.complete,),
                   ));
                 },
-                selected: true ? !this.complete : true,
+                selected: !this.complete,
               ),
               new ListTile(
                 leading: const Icon(Icons.bookmark),
                 title: new Text('done'),
-                selected: true ? this.complete : false,
+                selected: this.complete,
                 onTap: (){
                   changeTrueComplete();
                   Navigator.push(context, new MaterialPageRoute(

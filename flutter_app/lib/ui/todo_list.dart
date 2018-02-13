@@ -44,7 +44,7 @@ class _TodoListState extends State<TodoList>{
       );
     }
     return new ListView.builder(
-      itemBuilder: (BuildContext, int index) => new TodoItem(
+      itemBuilder: (BuildContext context, int index) => new TodoItem(
         todo: todoList[index],
         completeCondition: completeCondition,
       ),

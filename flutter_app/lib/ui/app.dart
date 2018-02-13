@@ -29,20 +29,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePage extends State<MyHomePage> {
   bool complete;
-  final TextEditingController _controller = new TextEditingController();
   List<Todo> _todoList = [];
 
   _MyHomePage(this.complete);
-
-  void _addTodo(String todoName){
-    this._todoList = new RepositoryFactory()
-        .getTodoRepositoryImpl()
-        .addTodo(todoName);
-    setState((){
-      _controller.text = '';
-    });
-    print(Navigator.defaultRouteName);
-  }
 
   @override
   initState(){
@@ -62,18 +51,16 @@ class _MyHomePage extends State<MyHomePage> {
     return 'doing';
   }
 
-
   @override
   build(BuildContext context){
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(getTitle()),
-      ),
+        title: new Text(getTitle()), ),
       drawer: new MyDrawer(
         complete: this.complete,
       ),
       body: new Center(
-          child: new TodoList(todoList: this._todoList, completeCondition: this.complete,),
+        child: new TodoList(todoList: this._todoList, completeCondition: this.complete,),
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: (){

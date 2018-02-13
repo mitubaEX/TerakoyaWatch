@@ -20,6 +20,12 @@ class _TodoItemState extends State<TodoItem> {
     super.initState();
   }
 
+  TextDecoration getTextDecoration(bool comp){
+    if(comp)
+      return TextDecoration.lineThrough;
+    return TextDecoration.none;
+  }
+
   @override
   Widget build(BuildContext context){
     print('completeCondition:' + completeCondition.toString());
@@ -37,11 +43,12 @@ class _TodoItemState extends State<TodoItem> {
             ));
           },
         ),
-        new Text(widget.todo.id.toString()),
-        new Text(':'),
-        new Text(widget.todo.todoName),
-        new Text(':'),
-        new Text(widget.todo.comp.toString()),
+        new Text(
+          widget.todo.todoName,
+          style: new TextStyle(
+              fontSize: 16.0,
+              decoration: getTextDecoration(widget.todo.comp)),
+        ),
       ],
     );
   }
