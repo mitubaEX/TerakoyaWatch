@@ -3,12 +3,16 @@ import 'package:flutter_app/models/todo.dart';
 
 class TodoItem extends StatefulWidget {
   final Todo todo;
-  TodoItem({Key key, this.todo}):super(key: key);
+  final bool completeCondition;
+  TodoItem({Key key, this.todo, this.completeCondition}):super(key: key);
   @override
-  _TodoItemState createState() => new _TodoItemState();
+  _TodoItemState createState() => new _TodoItemState(completeCondition);
 }
 
 class _TodoItemState extends State<TodoItem> {
+  final bool  completeCondition;
+
+  _TodoItemState(this.completeCondition);
 
   @override
   void initState(){
@@ -19,6 +23,14 @@ class _TodoItemState extends State<TodoItem> {
   Widget build(BuildContext context){
     return new Row(
       children: <Widget>[
+        new Checkbox(
+          value: widget.todo.comp,
+          onChanged: (bool newValue){
+            setState((){
+              widget.todo.comp = newValue;
+            });
+          },
+        ),
         new Text(widget.todo.id.toString()),
         new Text(':'),
         new Text(widget.todo.todoName),

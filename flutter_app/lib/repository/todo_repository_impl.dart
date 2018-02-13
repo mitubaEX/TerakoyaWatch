@@ -9,6 +9,10 @@ class TodoRepositoryImpl implements TodoRepository{
     return todoEntityImpl.findAll();
   }
 
+  List<Todo> findGivenComleteCondition(bool completeCondition){
+    return todoEntityImpl.findAll().where((i) => i.comp == completeCondition).toList();
+  }
+
   List<Todo> addTodo(String todoName) {
     return todoEntityImpl.addTodo(todoName);
   }
