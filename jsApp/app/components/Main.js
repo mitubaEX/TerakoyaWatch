@@ -9,13 +9,20 @@ import {
 import VisibleTodoList from '../containers/VisibleTodoList'
 import AddTodo from '../containers/AddTodo'
 
+import {Calendar, CalendarList} from 'react-native-calendars'
+
 class MainContainer extends Component {
   render() {
     // この部分はビューをレンダーです。
     return (
       <View style={styles.container}>
-        <VisibleTodoList />
-        <AddTodo />
+        <CalendarList
+          onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+          pastScrollRange={50}
+          futureScrollRange={50}
+          scrollEnabled={true}
+          showScrollIndicator={true}
+        />
       </View>
     );
   }
