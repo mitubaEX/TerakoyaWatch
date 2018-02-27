@@ -16,12 +16,15 @@ class MainContainer extends Component {
     // この部分はビューをレンダーです。
     return (
       <View style={styles.container}>
-        <CalendarList
-          onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-          pastScrollRange={50}
-          futureScrollRange={50}
-          scrollEnabled={true}
-          showScrollIndicator={true}
+        <Calendar
+          onDayPress={(day) => {console.log('selected day', day)}}
+          monthFormat={'yyyy MM'}
+          onMonthChange={(month) => {console.log('month changed', month)}}
+          hideExtraDays={true}
+          hideArrows={false}
+          firstDay={1}
+          showWeekNumbers={false}
+          style={styles.calendar}
         />
       </View>
     );
@@ -30,6 +33,13 @@ class MainContainer extends Component {
 
 // ビューのスタイル修正
 const styles = StyleSheet.create({
+  calendar: {
+    borderTopWidth: 1,
+    paddingTop: 5,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    height: 350
+  },
   container: {
     marginTop: Platform.OS === "ios" ? 20 : 0,
     flex: 1,
