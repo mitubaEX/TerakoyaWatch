@@ -17,7 +17,7 @@ export default class EventItem extends Component {
           <Text>{this.props.item}</Text>
         </Body>
         <Right>
-          <Button transparent onPress={Actions.EventPage}>
+          <Button transparent onPress={() => Actions.EventPage({day: 'helllo'})}>
             <Icon name="arrow-forward" />
           </Button>
         </Right>
