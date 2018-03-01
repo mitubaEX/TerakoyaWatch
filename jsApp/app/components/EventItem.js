@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base';
 
+import EventPage from './EventPage';
+
 export default class EventItem extends Component {
   render() {
     return (

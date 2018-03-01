@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import store from './app/store'
 
 // MainContainerを利用するため
-import MainComponent from './app/components/Main'
+import Main from './app/components/Main'
 
 /**
  * Provideを使ってreduxとreact連携する
@@ -17,7 +17,7 @@ import MainComponent from './app/components/Main'
 const App = () => {
   return (
     <Provider store={store}>
-      <MainComponent />
+      <Main />
     </Provider>
   )
 }
