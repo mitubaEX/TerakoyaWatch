@@ -5,12 +5,15 @@ import {
 } from 'react-native';
 
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars'
+import {
+    Actions,
+} from 'react-native-router-flux';
 
 export default class MyCalendar extends Component {
   render() {
     return (
       <Calendar
-        onDayPress={(day) => {console.log('selected day', day)}}
+        onDayPress={(day) => {Actions.EventPage({day: 'hello'})}}
         monthFormat={'yyyy MM'}
         onMonthChange={(month) => {console.log('month changed', month)}}
         hideExtraDays={true}
