@@ -8,8 +8,7 @@ export default class EventList extends Component {
     return (
       <List dataArray={items}
         renderRow={(item) =>
-            <EventItem item={item}>
-            </EventItem>
+            <EventItem item={item}/>
         }
       >
       </List>

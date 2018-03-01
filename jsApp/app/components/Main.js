@@ -1,45 +1,31 @@
 // 必要なリソース追加する
 import React, { Component } from 'react';
+
+import MainPage from './MainPage'
+import EventPage from './EventPage'
+
 import {
-  View,
-  StyleSheet,
-  Platform,
-  FlatList,
-  Text
-} from 'react-native';
+  StackNavigator,
+} from 'react-navigation';
 
-import VisibleTodoList from '../containers/VisibleTodoList'
-import AddTodo from '../containers/AddTodo'
+import {
+    Scene,
+    Router,
+} from 'react-native-router-flux';
 
-import { Container, Header, Content, List, ListItem, Body, Title, Separator } from 'native-base';
 
-import EventList from './EventList'
-import MyCalendar from './Calendar'
-
-class MainContainer extends Component {
+class Main extends Component {
   render() {
-    // この部分はビューをレンダーです。
     return (
-      <Container>
-        <Header >
-          <Body>
-            <Title>Header</Title>
-          </Body>
-        </Header>
-        <Content>
-          <Separator bordered>
-            <Text>New Event</Text>
-          </Separator>
-          <EventList />
-          <Separator bordered>
-            <Text>Calendar</Text>
-          </Separator>
-          <MyCalendar />
-        </Content>
-      </Container>
+      <Router>
+        <Scene key='root'>
+          <Scene key='MainPage' initial component={MainPage} title='Top'/>
+          <Scene key='EventPage' component={EventPage} title='Event'/>
+        </Scene>
+      </Router>
     );
   }
 }
 
 // このContainerを利用できるためエクスポートします
-export default MainContainer;
+export default Main;
