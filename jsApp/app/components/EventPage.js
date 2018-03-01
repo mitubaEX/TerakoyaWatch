@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Button, Text } from 'native-base';
+import { Card, CardItem, Container, Header, Content, Button, Text, Left, Right, Body } from 'native-base';
 
 export default class EventPage extends Component {
 	render() {
 		return (
 			<Container>
-				<Header />
 				<Content>
 					<Card>
 						<CardItem header>

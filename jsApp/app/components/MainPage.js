@@ -9,11 +9,6 @@ export default class MainPage extends Component {
   render(){
     return (
       <Container>
-        <Header >
-          <Body>
-            <Title>Header</Title>
-          </Body>
-        </Header>
         <Content>
           <Separator bordered>
             <Text>New Event</Text>
