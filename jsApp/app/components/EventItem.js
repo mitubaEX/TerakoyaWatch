@@ -7,14 +7,19 @@ import {
 import EventPage from './EventPage';
 
 export default class EventItem extends Component {
+  constructor(props) {
+    super(props)
+    this.props = props
+  }
+
   render() {
     return (
       <ListItem icon>
         <Left>
-          <Text>2/28</Text>
+          <Text>{this.props.item.date}</Text>
         </Left>
         <Body>
-          <Text>{this.props.item}</Text>
+          <Text>{this.props.item.title}</Text>
         </Body>
         <Right>
           <Button transparent onPress={() => Actions.EventPage({day: 'helllo'})}>

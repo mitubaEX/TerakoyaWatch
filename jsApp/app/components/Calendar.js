@@ -10,6 +10,11 @@ import {
 } from 'react-native-router-flux';
 
 export default class MyCalendar extends Component {
+  constructor(props) {
+    super(props)
+    this.props = props
+  }
+
   render() {
     return (
       <Calendar

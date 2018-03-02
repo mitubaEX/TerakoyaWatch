@@ -15,6 +15,11 @@ import {
 
 
 class Main extends Component {
+  constructor(props) {
+    super(props)
+    this.props = props
+  }
+
   render() {
     return (
       <Router>

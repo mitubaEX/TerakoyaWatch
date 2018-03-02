@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "date": "2018-03-19",
+      "title": "hello-world",
+      "body": "hello-world"
+    },
+    {
+      "id": 2,
+      "date": "2018-03-20",
+      "title": "world-hello",
+      "body": "world-hello"
+    }
+  ]
+}
