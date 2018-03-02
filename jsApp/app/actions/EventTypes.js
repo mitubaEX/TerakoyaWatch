@@ -1,0 +1,2 @@
+export const GET_EVENTS = "GET_EVENTS"
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
