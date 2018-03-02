@@ -8,17 +8,14 @@ export default class EventPage extends Component {
         <Content>
           <Card>
             <CardItem header>
-              <Text>NativeBase</Text>
+              <Text>{this.props.item.title}</Text>
             </CardItem>
             <CardItem>
               <Body>
                 <Text>
-                  {this.props.day}
+                  {this.props.item.body}
                 </Text>
               </Body>
-            </CardItem>
-            <CardItem footer>
-              <Text>GeekyAnts</Text>
             </CardItem>
           </Card>
         </Content>

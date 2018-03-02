@@ -1,7 +1,7 @@
 // 必要なリソース追加する
 import React, { Component } from 'react';
 
-import MainPage from './MainPage'
+import MainPageContainer from './MainPage'
 import EventPage from './EventPage'
 
 import {
@@ -24,7 +24,7 @@ class Main extends Component {
     return (
       <Router>
         <Scene key='root'>
-          <Scene key='MainPage' initial component={MainPage} title='Top'/>
+          <Scene key='MainPage' initial component={MainPageContainer} title='Top'/>
           <Scene key='EventPage' component={EventPage} title='Event'/>
         </Scene>
       </Router>
