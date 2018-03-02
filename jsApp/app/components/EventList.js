@@ -9,11 +9,11 @@ export default class EventList extends Component {
     this.props = props
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    const { dispatch } = this.props
-    dispatch(getEvents())
-  }
+  // componentDidMount() {
+  //   console.log(this.props)
+  //   const { dispatch } = this.props
+  //   dispatch(getEvents())
+  // }
 
   render() {
     // var items = ['Simon Mignolet','Nathaniel Clyne','Dejan Lovren','Mama Sakho','Emre Can'];

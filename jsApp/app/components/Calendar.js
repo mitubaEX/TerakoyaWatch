@@ -16,9 +16,10 @@ export default class MyCalendar extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Calendar
-        onDayPress={(day) => {Actions.EventPage({day: 'hello'})}}
+        onDayPress={(day) => {Actions.EventPage({item: {date: '2-19', title:'hogehoge', body: 'fugafuga'}})}}
         monthFormat={'yyyy MM'}
         onMonthChange={(month) => {console.log('month changed', month)}}
         hideExtraDays={true}
