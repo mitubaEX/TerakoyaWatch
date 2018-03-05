@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Container, Header, Content, List, ListItem, Body, Title, Separator, Text } from 'native-base';
 
 import MyCalendar from './Calendar'
-import {getEvents} from '../actions/EventAction'
+import {getFirebaseData} from '../actions/EventAction'
 import EventList from './EventList'
 
 class MainPage extends Component {
@@ -15,7 +15,7 @@ class MainPage extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(getEvents())
+    dispatch(getFirebaseData())
   }
 
   render(){
