@@ -1,9 +1,13 @@
-import { GET_USER_SUCCESS, GET_EVENTS_FROM_FIREBASE_SUCCESS } from '../actions/EventTypes';
+/* @flow */
+import { GET_EVENTS_FROM_FIREBASE_SUCCESS, type Action } from '../actions/EventTypes';
 
-const events = (state = { isFetching: false, events: [] }, action) => {
+type State = {
+  isFetching: boolean,
+  events: [],
+}
+
+const events = (state: State = { isFetching: false, events: [] }, action: Action) => {
   switch (action.type) {
-    case GET_USER_SUCCESS:
-      return action.events;
     case GET_EVENTS_FROM_FIREBASE_SUCCESS:
       return {
         isFetching: true,

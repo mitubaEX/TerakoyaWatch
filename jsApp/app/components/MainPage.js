@@ -1,3 +1,4 @@
+/* @flow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -6,7 +7,12 @@ import { Container, Content, Spinner } from 'native-base';
 import { getFirebaseData } from '../actions/EventAction';
 import EventList from './EventList';
 
-class MainPage extends Component {
+type Props = {
+  dispatch: any,
+  events: [],
+}
+
+class MainPage extends Component<Props, {}> {
   constructor(props) {
     super(props);
     this.props = props;

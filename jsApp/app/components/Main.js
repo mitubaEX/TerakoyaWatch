@@ -1,4 +1,4 @@
-// 必要なリソース追加する
+/* @flow */
 import React, { Component } from 'react';
 
 import {
@@ -9,13 +9,7 @@ import {
 import MainPageContainer from './MainPage';
 import EventPage from './EventPage';
 
-
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
+class Main extends Component<{}, {}> {
   render() {
     return (
       <Router>

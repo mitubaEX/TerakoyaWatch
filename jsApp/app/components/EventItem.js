@@ -1,9 +1,18 @@
+/* @flow */
 import React, { Component } from 'react';
 import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-export default class EventItem extends Component {
-  constructor(props) {
+type Props = {
+  item: {
+    date: string,
+    title: string,
+    body: string,
+  }
+}
+
+export default class EventItem extends Component<Props, {}> {
+  constructor(props: Props) {
     super(props);
     this.props = props;
   }
