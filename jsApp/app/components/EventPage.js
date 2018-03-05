@@ -1,7 +1,16 @@
+/* @flow */
 import React, { Component } from 'react';
 import { Card, CardItem, Container, Content, Text, Body } from 'native-base';
 
-export default class EventPage extends Component {
+type Props = {
+  item: {
+    date: string,
+    title: string,
+    body: string,
+  }
+}
+
+export default class EventPage extends Component<Props, {}> {
   render() {
     return (
       <Container>

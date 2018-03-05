@@ -1,6 +1,12 @@
+/* @flow */
 import { GET_USER_SUCCESS, GET_EVENTS_FROM_FIREBASE_SUCCESS } from '../actions/EventTypes';
 
-const events = (state = { isFetching: false, events: [] }, action) => {
+type State = {
+  isFetching: boolean,
+  events: [],
+}
+
+const events = (state: State = { isFetching: false, events: [] }, action: any) => {
   switch (action.type) {
     case GET_USER_SUCCESS:
       return action.events;
