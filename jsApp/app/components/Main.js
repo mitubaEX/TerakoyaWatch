@@ -1,31 +1,27 @@
 // 必要なリソース追加する
 import React, { Component } from 'react';
 
-import MainPageContainer from './MainPage'
-import EventPage from './EventPage'
-
 import {
-  StackNavigator,
-} from 'react-navigation';
-
-import {
-    Scene,
-    Router,
+  Scene,
+  Router,
 } from 'react-native-router-flux';
+
+import MainPageContainer from './MainPage';
+import EventPage from './EventPage';
 
 
 class Main extends Component {
   constructor(props) {
-    super(props)
-    this.props = props
+    super(props);
+    this.props = props;
   }
 
   render() {
     return (
       <Router>
-        <Scene key='root'>
-          <Scene key='MainPage' initial component={MainPageContainer} title='Top'/>
-          <Scene key='EventPage' component={EventPage} title='Event'/>
+        <Scene key="root">
+          <Scene key="MainPage" initial component={MainPageContainer} title="Top" />
+          <Scene key="EventPage" component={EventPage} title="Event" />
         </Scene>
       </Router>
     );
