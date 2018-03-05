@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
-import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base'
-import {
-  Actions,
-} from 'react-native-router-flux'
-
-import EventPage from './EventPage'
+import React, { Component } from 'react';
+import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class EventItem extends Component {
   constructor(props) {
-    super(props)
-    this.props = props
+    super(props);
+    this.props = props;
   }
 
   render() {
@@ -22,11 +18,11 @@ export default class EventItem extends Component {
           <Text>{this.props.item.title}</Text>
         </Body>
         <Right>
-          <Button transparent onPress={() => Actions.EventPage({item: this.props.item})}>
+          <Button transparent onPress={() => Actions.EventPage({ item: this.props.item })}>
             <Icon name="arrow-forward" />
           </Button>
         </Right>
       </ListItem>
-    )
+    );
   }
 }
