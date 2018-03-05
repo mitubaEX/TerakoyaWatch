@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base';
+import React, { Component } from 'react'
+import { ListItem, Text, Body, Button, Icon, Right, Left } from 'native-base'
 import {
-    Actions,
-} from 'react-native-router-flux';
+  Actions,
+} from 'react-native-router-flux'
 
-import EventPage from './EventPage';
+import EventPage from './EventPage'
 
 export default class EventItem extends Component {
   constructor(props) {
@@ -27,6 +27,6 @@ export default class EventItem extends Component {
           </Button>
         </Right>
       </ListItem>
-    );
+    )
   }
 }
