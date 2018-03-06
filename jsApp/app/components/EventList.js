@@ -2,9 +2,12 @@
 import React, { Component } from 'react';
 import { List } from 'native-base';
 import EventItem from './EventItem';
+import {getFirebaseData} from '../actions/EventAction.js';
 
 type Props = {
-  events: []
+  dispatch?: any,
+  isFetching: boolean,
+  events: [],
 }
 
 export default class EventList extends Component<Props, {}> {
