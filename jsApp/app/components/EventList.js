@@ -19,7 +19,7 @@ export default class EventList extends Component<Props, {}> {
   render() {
     return (
       <List
-        dataArray={this.props.events}
+        dataArray={this.props.events.slice(0, 4)}
         renderRow={item =>
           <EventItem item={item} />
         }

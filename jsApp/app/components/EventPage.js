@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Card, CardItem, Container, Content, Text, Body } from 'native-base';
+import { Card, CardItem, Container, Content, Text, Body, Left, Right } from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 type Props = {
   item: {
@@ -17,7 +18,13 @@ export default class EventPage extends Component<Props, {}> {
         <Content>
           <Card>
             <CardItem header>
-              <Text>{this.props.item.title}</Text>
+              <Left>
+                <Text>{this.props.item.date}</Text>
+              </Left>
+              <Body>
+                <Text>{this.props.item.title}</Text>
+              </Body>
+              <Right />
             </CardItem>
             <CardItem>
               <Body>

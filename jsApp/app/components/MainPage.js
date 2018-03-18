@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { RefreshControl } from 'react-native';
-import { Container, Content, Spinner } from 'native-base';
+import { Container, Content, Spinner, Separator, Text } from 'native-base';
 
 import { getFirebaseData } from '../actions/EventAction';
 import EventList from './EventList';
+import MyCalendar from './Calendar';
 
 type Props = {
   dispatch: any,
@@ -39,10 +40,17 @@ class MainPage extends Component<Props, {}> {
                 refreshing={this.props.isFetching}
                 onRefresh={this.refreshList.bind(this)}
             />}>
+            <Separator bordered>
+              <Text>New Event</Text>
+            </Separator>
             <EventList events={this.props.events} isFetching={this.props.isFetching}/>
+            <Separator bordered>
+              <Text>Event Calendar</Text>
+            </Separator>
+            <MyCalendar events={this.props.events} />
           </Content>
           : <Spinner color="blue" />))()}
-      </Container>
+        </Container>
     );
   }
 }
