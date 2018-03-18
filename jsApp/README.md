@@ -5,6 +5,7 @@
 run app
 
 ```
+cd jsApp
 npm install
 react-native run-ios
 ```
