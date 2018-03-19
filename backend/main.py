@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, jsonify, abort, make_response, request
+from flask import Flask, jsonify, abort, make_response, request, render_template
 from flask_httpauth import HTTPBasicAuth
 import firebase_admin
 from firebase_admin import credentials
@@ -34,6 +34,7 @@ def get_pw(username):
 @auth.login_required
 def index():
     return "Hello, %s!" % auth.username()
+    # return render_template('index.html')
 
 
 @api.route('/events', methods=['GET'])
