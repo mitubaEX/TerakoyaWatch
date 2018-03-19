@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, jsonify, abort, make_response, request
+from flask_httpauth import HTTPBasicAuth
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
 api = Flask(__name__)
+auth = HTTPBasicAuth()
 cred = credentials.Certificate(
     './terakoyawatch-firebase-adminsdk-0ksrc-b4bbf5e344.json')
 
@@ -16,6 +18,22 @@ firebase_admin.initialize_app(cred, {
 })
 
 ref = db.reference('/data')
+users = {
+    "admin": "admin"
+}
+
+
+@auth.get_password
+def get_pw(username):
+    if username in users:
+        return users.get(username)
+    return None
+
+
+@api.route('/')
+@auth.login_required
+def index():
+    return "Hello, %s!" % auth.username()
 
 
 @api.route('/events', methods=['GET'])
