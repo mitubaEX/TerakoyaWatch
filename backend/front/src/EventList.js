@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 class EventList extends Component {
   constructor(props) {
@@ -6,10 +7,21 @@ class EventList extends Component {
     this.props = props;
   }
 
+  getMapList(){
+    console.log(this.props.data)
+    if (this.props.data !== null){
+      return (this.props.data.map((n) => <li key={n.id}>{n.date + ',' + n.title}<div><ReactMarkdown source={n.body} /></div></li>))
+    } else {
+      return (<li></li>)
+    }
+  }
+
   render() {
     console.log(this.props.data)
     return (
-      <ul>{this.props.data.map((n) => <li key={n.id}>{n.date + ',' + n.title}</li>)}</ul>
+      <ul>{
+        this.getMapList()
+      }</ul>
     );
   }
 }

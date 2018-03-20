@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Card, CardItem, Container, Content, Text, Body, Left, Right } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import Markdown from 'react-native-simple-markdown'
 
 type Props = {
   item: []
