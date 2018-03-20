@@ -16,10 +16,16 @@ export default class EventList extends Component<Props, {}> {
     this.props = props;
   }
 
+  getNowDate() {
+    date = new Date();
+    dateString = date.getFullYear() + '-' + ('00' + (date.getMonth() + 1)).slice(-2) + '-' + ('00' + date.getDate()).slice(-2);
+    return dateString;
+  }
+
   render() {
     return (
       <List
-        dataArray={this.props.events.slice(0, 4)}
+        dataArray={this.props.events.filter((n) => n.date >= this.getNowDate()).slice(0, 4)}
         renderRow={item =>
           <EventItem item={item} />
         }
