@@ -37,7 +37,11 @@ export default class MyCalendar extends Component<Props, {}> {
     this.props.events.forEach((n) => dateList[n.date] = {marked: true});
     return (
       <Calendar
-        onDayPress={(day) => {if(this.getTitle(day.dateString) !== null) Actions.EventPage({item: {date: day.dateString, title: this.getTitle(day.dateString), body: this.getBody(day.dateString)}})}}
+        onDayPress={(day) => {
+          if(this.getTitle(day.dateString) !== null){
+            Actions.EventPage({item: this.props.events.filter((n) => n.date === day.dateString)})
+          }
+        }}
         monthFormat={'yyyy MM'}
         onMonthChange={(month) => {console.log('month changed', month)}}
         hideExtraDays={true}
