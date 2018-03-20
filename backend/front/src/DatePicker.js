@@ -40,7 +40,11 @@ export default class MyDatePicker extends React.Component {
 
   handleSubmit(event) {
     const sendData = {title: this.state.value, body: this.state.body, date: this.state.dateString, id: this.props.data.length + 1}
-    firebaseDb.ref('data').set(this.props.data.concat([sendData]))
+    if(this.props.data !== null){
+      firebaseDb.ref('data').set(this.props.data.concat([sendData]))
+    } else {
+      firebaseDb.ref('data').set([sendData])
+    }
     alert('A name was submitted: ' + this.state.value + this.state.body + this.state.dateString);
     event.preventDefault();
   }
@@ -53,14 +57,18 @@ export default class MyDatePicker extends React.Component {
           onChange={this.handleChange}
         />
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleFormChange} />
-          </label>
-          <label>
-            Body:
-            <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
-          </label>
+          <div>
+            <label>
+              Name:
+              <input type="text" value={this.state.value} onChange={this.handleFormChange} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Body:
+              <textarea value={this.state.body} onChange={this.handleBodyChange} rows="15"/>
+            </label>
+          </div>
           <input type="submit" value="Submit" />
         </form>
       </div>
