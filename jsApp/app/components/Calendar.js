@@ -1,4 +1,4 @@
-// 必要なリソース追加する
+/* @flow */
 import React, { Component } from 'react';
 import {
   StyleSheet
@@ -8,10 +8,11 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars'
 import {
     Actions,
 } from 'react-native-router-flux';
+import Event from '../type/Event';
 
 type Props = {
-  events: [],
-}
+  events: Array<Event>
+};
 
 export default class MyCalendar extends Component<Props, {}> {
   constructor(props: Props) {
@@ -19,31 +20,29 @@ export default class MyCalendar extends Component<Props, {}> {
     this.props = props
   }
 
-  getTitle(dateString: string){
-    filterArray = this.props.events.filter((n) => n.date == dateString);
+  getTitle(dateString: string): string{
+    filterArray = this.props.events.filter((event: Event): Event => event.date == dateString);
     if(filterArray.length === 0){
       return null;
     }
     return filterArray[0].title
   }
 
-  getBody(dateString: string){
-    return this.props.events.filter((n) => n.date == dateString)[0].body
+  getBody(dateString: string): string{
+    return this.props.events.filter((event: Event): Event => event.date == dateString)[0].body
   }
 
-  render() {
-    console.log(this.props)
+  render(): {}{
     const dateList = {};
-    this.props.events.forEach((n) => dateList[n.date] = {marked: true});
+    this.props.events.forEach((n: Event): Event => dateList[n.date] = {marked: true});
     return (
       <Calendar
-        onDayPress={(day) => {
+        onDayPress={(day: {}) => {
           if(this.getTitle(day.dateString) !== null){
-            Actions.EventPage({item: this.props.events.filter((n) => n.date === day.dateString)})
+            Actions.EventPage({item: this.props.events.filter((n: Event): Event => n.date === day.dateString)})
           }
         }}
         monthFormat={'yyyy MM'}
-        onMonthChange={(month) => {console.log('month changed', month)}}
         hideExtraDays={true}
         hideArrows={false}
         firstDay={1}

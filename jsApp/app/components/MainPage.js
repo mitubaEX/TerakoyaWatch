@@ -8,15 +8,17 @@ import { Container, Content, Spinner, Separator, Text } from 'native-base';
 import { getFirebaseData } from '../actions/EventAction';
 import EventList from './EventList';
 import MyCalendar from './Calendar';
+import Event from '../type/Event';
+import {State} from '../reducers/EventReducers';
 
 type Props = {
-  dispatch: any,
+  dispatch: {},
   isFetching: boolean,
-  events: [],
-}
+  events: Array<Event>
+};
 
 class MainPage extends Component<Props, {}> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.props = props;
   }
@@ -31,10 +33,10 @@ class MainPage extends Component<Props, {}> {
     dispatch(getFirebaseData());
   }
 
-  render() {
+  render(): {} {
     return (
       <Container>
-        {(() => (!this.props.isFetching ?
+        {((): void => (!this.props.isFetching ?
           <Content
             refreshControl={<RefreshControl
                 refreshing={this.props.isFetching}
@@ -55,7 +57,7 @@ class MainPage extends Component<Props, {}> {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: State): State {
   return {
     isFetching: state.events.isFetching,
     events: state.events.events,

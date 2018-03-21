@@ -3,27 +3,28 @@ import axios from 'axios';
 
 import {
   GET_EVENTS_FROM_FIREBASE_SUCCESS,
-  IS_FETCHING
+  IS_FETCHING,
+  Action
 } from './EventTypes';
 
 import firebase from '../firebase/firebase';
 
-export function getEventsFromFirebaseSuccess(events: {events: []}) {
+export function getEventsFromFirebaseSuccess(events: {events: []}): Action {
   return {
     type: GET_EVENTS_FROM_FIREBASE_SUCCESS,
     events,
   };
 }
 
-export function getFirebaseData() {
-  return async (dispatch: any) => {
+export function getFirebaseData(): void {
+  return async (dispatch: {}): void => {
     dispatch(isFetching);
     const firebaseData = ((await firebase.database().ref('data').once('value')).val());
     dispatch(getEventsFromFirebaseSuccess(firebaseData));
   };
 }
 
-export function isFetching() {
+export function isFetching(): Action {
   return {
     type: IS_FETCHING,
   }

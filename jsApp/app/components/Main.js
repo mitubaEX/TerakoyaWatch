@@ -10,7 +10,7 @@ import MainPageContainer from './MainPage';
 import EventPage from './EventPage';
 
 class Main extends Component<{}, {}> {
-  render() {
+  render(): React.Node {
     return (
       <Router>
         <Scene key="root">
@@ -22,5 +22,4 @@ class Main extends Component<{}, {}> {
   }
 }
 
-// このContainerを利用できるためエクスポートします
 export default Main;

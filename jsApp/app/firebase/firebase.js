@@ -1,4 +1,5 @@
-import firebase from 'firebase'
+/* @flow */
+import firebase from 'firebase';
 
 var config = {
   apiKey: "AIzaSyBv8T2IvJueP03nxLYjez9SIiAl4fe1LV0",
