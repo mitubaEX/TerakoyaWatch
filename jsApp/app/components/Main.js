@@ -12,10 +12,10 @@ import EventPage from './EventPage';
 class Main extends Component<{}, {}> {
   render(): React.Node {
     return (
-      <Router>
+      <Router navigationBarStyle={{ backgroundColor: '#58D3F7' }} titleStyle={{color : "#fff"}}>
         <Scene key="root">
-          <Scene key="MainPage" initial component={MainPageContainer} title="Top" />
-          <Scene key="EventPage" component={EventPage} title="Event" />
+          <Scene key="MainPage" backTitle=" " headerTintColor="#fff" initial component={MainPageContainer} title="TeraWatch" />
+          <Scene key="EventPage" backTitle=" " headerTintColor="#fff" component={EventPage} />
         </Scene>
       </Router>
     );

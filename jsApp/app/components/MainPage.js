@@ -42,16 +42,16 @@ class MainPage extends Component<Props, {}> {
                 refreshing={this.props.isFetching}
                 onRefresh={this.refreshList.bind(this)}
             />}>
-            <Separator bordered>
-              <Text>New Event</Text>
+            <Separator bordered style={{backgroundColor: '#F2F2F2'}}>
+              <Text>近日開催イベント</Text>
             </Separator>
             <EventList events={this.props.events} isFetching={this.props.isFetching}/>
-            <Separator bordered>
-              <Text>Event Calendar</Text>
+            <Separator bordered style={{backgroundColor: '#F2F2F2'}}>
+              <Text>カレンダー</Text>
             </Separator>
             <MyCalendar events={this.props.events} />
           </Content>
-          : <Spinner color="blue" />))()}
+          : <Spinner color="blue" size="large" style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}/>))()}
         </Container>
     );
   }

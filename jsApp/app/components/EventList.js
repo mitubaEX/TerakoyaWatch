@@ -30,6 +30,7 @@ export default class EventList extends Component<Props, {}> {
         renderRow={(item: Event): Event =>
           <EventItem item={item} />
         }
+        style={{backgroundColor: 'white'}}
       />
     );
   }
