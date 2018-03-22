@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "firebase": "^4.10.1",
-    "native-base": "^2.3.9",
+    "native-base": "^2.3.10",
     "react": "16.2.0",
     "react-markdown": "^3.3.0",
     "react-native": "0.53.3",

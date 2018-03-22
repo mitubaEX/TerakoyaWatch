@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Card, CardItem, Container, Content, Text, Body, Left, Right } from 'native-base';
+import { Card, CardItem, Container, Content, Text, Body, Left, Right, Button, Icon } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Markdown from 'react-native-simple-markdown'
 import Event from '../type/Event'
@@ -15,15 +15,12 @@ export default class EventPage extends Component<Props, {}> {
       <Container>
         <Content>
           {this.props.item.map((n: Event): Event =>
-            <Card key={n.id}>
+            <Card key={n.id} style={{flex: 0}}>
               <CardItem header>
-                <Left>
-                  <Text>{n.date}</Text>
-                </Left>
                 <Body>
-                  <Text>{n.title}</Text>
+                  <Text note>{n.date}</Text>
+                  <Text style={{ fontWeight: 'bold' }}>{n.title}</Text>
                 </Body>
-                <Right />
               </CardItem>
               <CardItem>
                 <Body>
@@ -31,6 +28,8 @@ export default class EventPage extends Component<Props, {}> {
                     {n.body}
                   </Text>
                 </Body>
+              </CardItem>
+              <CardItem>
               </CardItem>
             </Card>
           )}

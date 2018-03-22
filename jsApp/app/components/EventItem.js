@@ -24,7 +24,7 @@ export default class EventItem extends Component<Props, {}> {
           <Text>{this.props.item.title}</Text>
         </Body>
         <Right>
-          <Button transparent onPress={(): void => Actions.EventPage({ item: [this.props.item] })}>
+          <Button transparent onPress={(): void => Actions.EventPage({ title: this.props.item.date + 'のイベント', item: [this.props.item] })}>
             <Icon name="arrow-forward" />
           </Button>
         </Right>
