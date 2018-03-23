@@ -26,7 +26,7 @@ export default class EventList extends Component<Props, {}> {
   render(): {} {
     return (
       <List
-        dataArray={this.props.events.filter((n: Event): Event => n.date >= this.getNowDate()).slice(0, 4)}
+        dataArray={this.props.events.filter((n: Event): Event => n.date >= this.getNowDate())}
         renderRow={(item: Event): Event =>
           <EventItem item={item} />
         }

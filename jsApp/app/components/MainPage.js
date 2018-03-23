@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { RefreshControl } from 'react-native';
-import { Container, Content, Spinner, Separator, Text } from 'native-base';
+import { Container, Content, Spinner, Separator, Text, Tabs, Tab, TabHeading, Icon } from 'native-base';
 
 import { getFirebaseData } from '../actions/EventAction';
 import EventList from './EventList';
@@ -37,20 +37,25 @@ class MainPage extends Component<Props, {}> {
     return (
       <Container>
         {((): void => (!this.props.isFetching ?
-          <Content
-            refreshControl={<RefreshControl
-                refreshing={this.props.isFetching}
-                onRefresh={this.refreshList.bind(this)}
-            />}>
-            <Separator bordered style={{backgroundColor: '#F2F2F2'}}>
-              <Text>近日開催イベント</Text>
-            </Separator>
-            <EventList events={this.props.events} isFetching={this.props.isFetching}/>
-            <Separator bordered style={{backgroundColor: '#F2F2F2'}}>
-              <Text>カレンダー</Text>
-            </Separator>
-            <MyCalendar events={this.props.events} />
-          </Content>
+          <Tabs tabBarUnderlineStyle={{backgroundColor:'#58D3F7' }} >
+            <Tab heading={<TabHeading><Icon name="list-box" /></TabHeading>}>
+              <Content
+                refreshControl={<RefreshControl
+                    refreshing={this.props.isFetching}
+                    onRefresh={this.refreshList.bind(this)}
+                />}>
+                <EventList events={this.props.events} isFetching={this.props.isFetching}/>
+              </Content>
+            </Tab>
+            <Tab heading={<TabHeading><Icon name="calendar" /></TabHeading>}>
+              <Content>
+                <MyCalendar events={this.props.events} />
+              </Content>
+            </Tab>
+            <Tab heading={<TabHeading><Icon name="mail" /></TabHeading>}>
+              <Text>匿名でメールが遅れるページ</Text>
+            </Tab>
+          </Tabs>
           : <Spinner color="blue" size="large" style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}/>))()}
         </Container>
     );
