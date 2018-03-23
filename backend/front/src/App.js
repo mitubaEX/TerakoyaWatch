@@ -27,8 +27,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">TrakoyaWatch</h1>
         </header>
-        <EventList data={this.state.data} />
-        <MyDatePicker data={this.state.data} />
+        <EventList data={this.state.data} getFirebaseData={this.getFirebaseData.bind(this)} />
+        <MyDatePicker data={this.state.data} getFirebaseData={this.getFirebaseData.bind(this)} />
       </div>
     );
   }
