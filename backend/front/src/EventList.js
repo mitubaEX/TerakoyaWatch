@@ -7,21 +7,20 @@ class EventList extends Component {
     this.props = props;
   }
 
-  getMapList(){
-    console.log(this.props.data)
-    if (this.props.data !== null){
-      return (this.props.data.map((n) => <li key={n.id}>{n.date + ',' + n.title}<div><ReactMarkdown source={n.body} /></div></li>))
-    } else {
-      return (<li></li>)
+  getMapList() {
+    if (this.props.data !== null) {
+      return (this.props.data.map(n => <li key={n.id}>{`${n.date},${n.title}`}<div><ReactMarkdown source={n.body} /></div></li>));
     }
+    return (<li />);
   }
 
   render() {
-    console.log(this.props.data)
+    console.log(this.props.data);
     return (
       <ul>{
         this.getMapList()
-      }</ul>
+      }
+      </ul>
     );
   }
 }
