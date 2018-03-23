@@ -8,13 +8,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.state = ({ data: [] });
   }
 
-
-  async componentDidMount() {
+  async getFirebaseData() {
     const value = ((await firebaseDb.ref('data').once('value')).val());
     console.log(value);
-    this.state = ({ data: value, pickDate: '' });
+    this.setState({ data: value });
+  }
+
+  componentDidMount() {
+    this.getFirebaseData();
   }
 
   render() {
@@ -23,8 +27,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">TrakoyaWatch</h1>
         </header>
-        <EventList data={this.state.data} />
-        <MyDatePicker data={this.state.data} />
+        <EventList data={this.state.data} getFirebaseData={this.getFirebaseData.bind(this)} />
+        <MyDatePicker data={this.state.data} getFirebaseData={this.getFirebaseData.bind(this)} />
       </div>
     );
   }

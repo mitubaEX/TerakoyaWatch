@@ -1,10 +1,8 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import { firebaseDb } from './firebase/';
-import PropTypes from 'prop-types';
-
-import 'react-datepicker/dist/react-datepicker.css';
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -52,16 +50,20 @@ export default class MyDatePicker extends React.Component {
       firebaseDb.ref('data').set([sendData]);
     }
     alert(`A name was submitted: ${this.state.value}${this.state.body}${this.state.dateString}`);
+    this.props.getFirebaseData();
     event.preventDefault();
   }
 
   render() {
     return (
       <div>
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-        />
+        <label htmlFor="Body">
+          Date:
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+          />
+        </label>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="Name">
