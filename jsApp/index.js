@@ -1,3 +1,4 @@
+/* @flow */
 // import { AppRegistry } from 'react-native';
 // import App from './app/containers/Main';
 //
@@ -14,7 +15,7 @@ import Main from './app/components/Main'
 /**
  * Provideを使ってreduxとreact連携する
  */
-const App = () => {
+const App = (): void => {
   return (
     <Provider store={store}>
       <Main />
@@ -22,4 +23,4 @@ const App = () => {
   )
 }
 
-AppRegistry.registerComponent('jsApp', () => App);
+AppRegistry.registerComponent('jsApp', (): void => App);
