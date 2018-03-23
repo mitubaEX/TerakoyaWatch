@@ -19,7 +19,7 @@ export default class EventList extends Component<Props, {}> {
 
   getNowDate(): string {
     date = new Date();
-    dateString = date.getFullYear() + '-' + ('00' + (date.getMonth() + 1)).slice(-2) + '-' + ('00' + date.getDate()).slice(-2);
+    dateString = `${date.getFullYear()}-${('00' + (date.getMonth() + 1)).slice(-2)}-${('00' + date.getDate()).slice(-2)}`;
     return dateString;
   }
 
