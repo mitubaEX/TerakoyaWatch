@@ -2,7 +2,6 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { firebaseDb } from './firebase/';
-import PropTypes from 'prop-types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
