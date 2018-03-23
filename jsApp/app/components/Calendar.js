@@ -34,9 +34,13 @@ export default class MyCalendar extends Component<Props, {}> {
 
   render(): {}{
     const dateList = {};
-    this.props.events.forEach((n: Event): Event => dateList[n.date] = {marked: true});
+    this.props.events.forEach((n: Event): Event => dateList[n.date] = {selected: true, color: 'blue'});
     return (
-      <Calendar
+      <CalendarList
+        pastScrollRange={0}
+        futureScrollRange={12}
+        scrollEnabled={true}
+        showScrollIndicator={true}
         onDayPress={(day: {}) => {
           if(this.getTitle(day.dateString) !== null){
             Actions.EventPage({title: day.dateString + 'のイベント', item: this.props.events.filter((n: Event): Event => n.date === day.dateString)})
@@ -59,7 +63,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     paddingTop: 5,
     borderBottomWidth: 1,
-    borderColor: '#eee',
-    height: 350
+    borderColor: '#eee'
   }
 });
