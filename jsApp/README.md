@@ -5,14 +5,7 @@
 run app
 
 ```
-cd jsApp
-npm install
-react-native run-ios
+open ios/jsApp.xcodeproj
 ```
 
-build mock server
-
-```
-json-server -w db.json
-```
-
+After opening Xcode, please build App.
