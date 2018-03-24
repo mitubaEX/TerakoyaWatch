@@ -2,7 +2,7 @@
 
 This application is event management app for Terakoya.
 
-## meaning of each directory
+## Directories
 
 |             | maintenance |
 |-------------|-------------|
@@ -10,3 +10,7 @@ This application is event management app for Terakoya.
 | backend     |      ⭕     |
 | flutter_app |      ✖　    |
 | scalaApp    |      ✖      |
+
+## Demo
+
+[Demo](./demo/ezgif.com-video-to-gif.gif)
