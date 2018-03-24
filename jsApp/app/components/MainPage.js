@@ -9,6 +9,7 @@ import { getFirebaseData } from '../actions/EventAction';
 import EventList from './EventList';
 import MyCalendar from './Calendar';
 import Event from '../type/Event';
+import MailForm from './MailForm';
 import {State} from '../reducers/EventReducers';
 
 type Props = {
@@ -53,7 +54,7 @@ class MainPage extends Component<Props, {}> {
               </Content>
             </Tab>
             <Tab heading={<TabHeading><Icon name="mail" /></TabHeading>}>
-              <Text>匿名でメールが遅れるページ</Text>
+              <MailForm />
             </Tab>
           </Tabs>
           : <Spinner color="blue" size="large" style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}/>))()}
