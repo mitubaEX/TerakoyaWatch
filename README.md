@@ -13,4 +13,4 @@ This application is event management app for Terakoya.
 
 ## Demo
 
-[Demo](./demo/ezgif.com-video-to-gif.gif)
+![Demo](./demo/ezgif.com-video-to-gif.gif)
