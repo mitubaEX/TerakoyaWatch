@@ -10,7 +10,7 @@ class EventList extends Component {
   deleteData(id) {
     const myRet = window.confirm('本当に削除しますか？');
     if (myRet === true) {
-      firebaseDb.ref('data').set(this.props.data.filter(n => n.id !== id));
+      firebaseDb.ref('data').child('events').set(this.props.data.filter(n => n.id !== id));
       this.props.getFirebaseData();
     } else {
     }

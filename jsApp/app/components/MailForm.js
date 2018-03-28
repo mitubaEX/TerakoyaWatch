@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Item, Input, Button, Text, Content } from 'native-base';
+import firebase from '../firebase/firebase';
 
 type State = {
   text: string
@@ -16,8 +17,9 @@ export default class MailForm extends Component<{}, State> {
     this.setState({text: text})
   }
 
-  sendMessage (text: string) {
-    console.log(text)
+  async sendMessage (text: string): void {
+    const firebaseData = (await firebase.database().ref('data').child('questions').push({question: text}));
+    this.setState({text: ''})
   }
 
 
