@@ -18,7 +18,7 @@ export default class EventPage extends Component<Props, {}> {
             <Card key={n.id} style={{flex: 0}}>
               <CardItem header>
                 <Body>
-                  <Text note>{n.date}</Text>
+                  <Text note>{n.date.replace(/-/g, "/")}</Text>
                   <Text style={{ fontWeight: 'bold' }}>{n.title}</Text>
                 </Body>
               </CardItem>
