@@ -18,13 +18,14 @@ export default class EventItem extends Component<Props, {}> {
     return (
       <ListItem icon>
         <Left>
-          <Text>{this.props.item.date}</Text>
+          <Icon name="brush" />
         </Left>
         <Body>
           <Text>{this.props.item.title}</Text>
+        <Text note>{this.props.item.date.replace(/-/g, "/")}</Text>
         </Body>
         <Right>
-          <Button transparent onPress={(): void => Actions.EventPage({ title: `${this.props.item.date} のイベント`, item: [this.props.item] })}>
+          <Button transparent onPress={(): void => Actions.EventPage({ title: `${this.props.item.date.replace(/-/g, "/")} のイベント`, item: [this.props.item] })}>
             <Icon name="arrow-forward" />
           </Button>
         </Right>

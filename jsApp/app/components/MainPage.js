@@ -38,8 +38,8 @@ class MainPage extends Component<Props, {}> {
     return (
       <Container>
         {((): void => (!this.props.isFetching ?
-          <Tabs tabBarUnderlineStyle={{backgroundColor:'#58D3F7' }} >
-            <Tab heading={<TabHeading><Icon name="list-box" /></TabHeading>}>
+          <Tabs tabBarUnderlineStyle={{backgroundColor:'#58D3F7'}} onChangeTab={(): void => console.log('hello')}>
+            <Tab heading={<TabHeading style={{backgroundColor: 'white'}}><Icon name="list-box" style={{color: '#585858'}}/></TabHeading>}>
               <Content
                 refreshControl={<RefreshControl
                     refreshing={this.props.isFetching}
@@ -48,12 +48,12 @@ class MainPage extends Component<Props, {}> {
                 <EventList events={this.props.events} isFetching={this.props.isFetching}/>
               </Content>
             </Tab>
-            <Tab heading={<TabHeading><Icon name="calendar" /></TabHeading>}>
+            <Tab heading={<TabHeading style={{backgroundColor: 'white'}}><Icon name="calendar" style={{color: '#585858'}}/></TabHeading>}>
               <Content>
                 <MyCalendar events={this.props.events} />
               </Content>
             </Tab>
-            <Tab heading={<TabHeading><Icon name="mail" /></TabHeading>}>
+            <Tab heading={<TabHeading style={{backgroundColor: 'white'}}><Icon name="mail"  style={{color: '#585858'}}/></TabHeading>}>
               <MailForm />
             </Tab>
           </Tabs>
