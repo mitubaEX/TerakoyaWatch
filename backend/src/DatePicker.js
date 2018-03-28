@@ -45,9 +45,9 @@ export default class MyDatePicker extends React.Component {
       id: this.props.data.length + 1,
     };
     if (this.props.data !== null) {
-      firebaseDb.ref('data').set(this.props.data.concat([sendData]));
+      firebaseDb.ref('data').child('events').set(this.props.data.concat([sendData]));
     } else {
-      firebaseDb.ref('data').set([sendData]);
+      firebaseDb.ref('data').child('events').set([sendData]);
     }
     alert(`A name was submitted: ${this.state.value}${this.state.body}${this.state.dateString}`);
     this.props.getFirebaseData();

@@ -19,7 +19,7 @@ export function getEventsFromFirebaseSuccess(events: {events: []}): Action {
 export function getFirebaseData(): void {
   return async (dispatch: {}): void => {
     dispatch(isFetching);
-    const firebaseData = ((await firebase.database().ref('data').once('value')).val());
+    const firebaseData = ((await firebase.database().ref('data').child('events').once('value')).val());
     dispatch(getEventsFromFirebaseSuccess(firebaseData));
   };
 }
