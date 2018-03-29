@@ -13,7 +13,6 @@ export default class MailForm extends Component<{}, State> {
     this.state = {text: ''}
   }
   onChangeText(text: string) {
-    console.log(text)
     this.setState({text: text})
   }
 

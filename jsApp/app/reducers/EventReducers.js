@@ -30,7 +30,6 @@ function getEachMonthEvents(events: Array<Event>): {} {
         eachMonthEvents[n.date.substring(0, 7)] = [n]
       }
     })
-  console.log(eachMonthEvents)
   if (eachMonthEvents)
     return eachMonthEvents
   else

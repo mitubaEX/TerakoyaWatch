@@ -39,7 +39,7 @@ class MainPage extends Component<Props, {}> {
     return (
       <Container>
         {((): void => (!this.props.isFetching ?
-          <Tabs tabBarUnderlineStyle={{backgroundColor:'#58D3F7'}} onChangeTab={(): void => console.log('hello')}>
+          <Tabs tabBarUnderlineStyle={{backgroundColor:'#58D3F7'}}>
             <Tab heading={<TabHeading style={{backgroundColor: 'white'}}><Icon name="list-box" style={{color: '#585858'}}/></TabHeading>}>
               <Content
                 refreshControl={<RefreshControl
