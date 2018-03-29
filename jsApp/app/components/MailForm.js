@@ -21,7 +21,7 @@ export default class MailForm extends Component<{}, State> {
     const firebaseData = (await firebase.database().ref('data').child('questions').push({question: text}));
     this.setState({text: ''})
     Toast.show({
-      text: 'Sended message!',
+      text: 'メッセージが送信されました！',
       position: 'bottom'
     })
   }
