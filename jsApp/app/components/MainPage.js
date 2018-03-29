@@ -15,7 +15,8 @@ import {State} from '../reducers/EventReducers';
 type Props = {
   dispatch: {},
   isFetching: boolean,
-  events: Array<Event>
+  events: Array<Event>,
+  eachMonthEvents: {}
 };
 
 class MainPage extends Component<Props, {}> {
@@ -45,7 +46,7 @@ class MainPage extends Component<Props, {}> {
                     refreshing={this.props.isFetching}
                     onRefresh={this.refreshList.bind(this)}
                 />}>
-                <EventList events={this.props.events} isFetching={this.props.isFetching}/>
+                <EventList events={this.props.events} isFetching={this.props.isFetching} eachMonthEvents={this.props.eachMonthEvents} />
               </Content>
             </Tab>
             <Tab heading={<TabHeading style={{backgroundColor: 'white'}}><Icon name="calendar" style={{color: '#585858'}}/></TabHeading>}>
@@ -67,6 +68,7 @@ function mapStateToProps(state: State): State {
   return {
     isFetching: state.events.isFetching,
     events: state.events.events,
+    eachMonthEvents: state.events.eachMonthEvents,
   };
 }
 

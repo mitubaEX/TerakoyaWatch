@@ -43,7 +43,7 @@ export default class MyCalendar extends Component<Props, {}> {
         showScrollIndicator={true}
         onDayPress={(day: {}) => {
           if(this.getTitle(day.dateString) !== null){
-            Actions.EventPage({title: `${day.dateString} のイベント`, item: this.props.events.filter((n: Event): Event => n.date === day.dateString)})
+            Actions.EventPage({title: `${day.dateString.replace(/-/g, "/")} のイベント`, item: this.props.events.filter((n: Event): Event => n.date === day.dateString)})
           }
         }}
         monthFormat={'yyyy MM'}
