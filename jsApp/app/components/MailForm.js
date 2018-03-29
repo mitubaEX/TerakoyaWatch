@@ -32,7 +32,7 @@ export default class MailForm extends Component<{}, State> {
       <Content>
         <Item style={{marginTop: 10, marginBottom: 10, borderColor: 'white'}}>
           <Input
-            placeholder="要望・問い合わせ何でもどうぞ！！"
+            placeholder={`要望・問い合わせ何でもどうぞ！！\nやってほしいイベントなども募集中！！`}
             onChangeText={(text: string): string => this.onChangeText(text)}
             value={this.state.text}
             multiline={true}
