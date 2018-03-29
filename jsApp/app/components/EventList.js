@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { List } from 'native-base';
+import { List, Content, Text, Separator } from 'native-base';
 import EventItem from './EventItem';
 import {getFirebaseData} from '../actions/EventAction.js';
 import Event from '../type/Event';
@@ -8,7 +8,8 @@ import Event from '../type/Event';
 type Props = {
   dispatch?: {},
   isFetching: boolean,
-  events: Array<Event>
+  events: Array<Event>,
+  eachMonthEvents: {}
 };
 
 export default class EventList extends Component<Props, {}> {
@@ -17,21 +18,20 @@ export default class EventList extends Component<Props, {}> {
     this.props = props;
   }
 
-  getNowDate(): string {
-    date = new Date();
-    dateString = `${date.getFullYear()}-${('00' + (date.getMonth() + 1)).slice(-2)}-${('00' + date.getDate()).slice(-2)}`;
-    return dateString;
-  }
-
   render(): {} {
     return (
-      <List
-        dataArray={this.props.events.filter((n: Event): Event => n.date >= this.getNowDate())}
-        renderRow={(item: Event): Event =>
-          <EventItem item={item} />
-        }
-        style={{backgroundColor: 'white'}}
-      />
+      <Content>
+        {Object.keys(this.props.eachMonthEvents).map((n: string, index: number): {} =>
+          <Content key={index}>
+            <Separator bordered>
+              <Text>{n.replace(/-/g, "/")}</Text>
+            </Separator>
+          {this.props.eachMonthEvents[n].map((m: Event, index: number): {} =>
+            <EventItem key={index} item={m} style={{backgroundColor: 'white'}}/>
+          )}
+        </Content>
+        )}
+      </Content>
     );
   }
 }
